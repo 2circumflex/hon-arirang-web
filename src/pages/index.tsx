@@ -1,8 +1,8 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import '../styles/index.css';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import '../styles/index.css'
 
-function Index() {
+const Index: React.FC = () => {
   return (
     <main>
       <Helmet>
@@ -10,7 +10,7 @@ function Index() {
       </Helmet>
       <p>혼아리랑</p>
     </main>
-  );
+  )
 }
 
-export default Index;
+export default Index
