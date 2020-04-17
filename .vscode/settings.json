@@ -1,6 +1,5 @@
 {
   "eslint.enable": true,
-  "eslint.codeActionsOnSave.mode": "all",
   "eslint.validate": [
     "javascript",
     "javascriptreact",
