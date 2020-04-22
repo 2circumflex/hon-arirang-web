@@ -14,7 +14,7 @@ const Header: React.FC = () => {
       <Flex
         style={{
           margin: '0 auto',
-          padding: '15px',
+          height: '70px',
           maxWidth: 768,
           flexDirection: 'row',
           alignItems: 'center'
