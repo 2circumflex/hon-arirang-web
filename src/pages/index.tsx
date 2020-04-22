@@ -1,16 +1,16 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React from 'react'
-import { Helmet } from 'react-helmet'
+
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
 
 const Index: React.FC = () => {
   return (
-    <main>
-      <Helmet>
-        <title>혼아리랑</title>
-      </Helmet>
+    <Layout>
+      <SEO title='Home' />
       <p>혼아리랑</p>
-    </main>
+    </Layout>
   )
 }
 

@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Node.js (TypeScript) API',
+    title: '혼아리랑',
+    description: '직장인 쌍절곤 아티스트입니다',
+    author: '혼아리랑',
   },
   plugins: [
     `gatsby-plugin-typescript`,
