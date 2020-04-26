@@ -17,4 +17,11 @@ export const plugins = [
     },
   },
   'gatsby-plugin-theme-ui',
+  {
+    resolve: 'gatsby-source-contentful',
+    options: {
+      spaceId: '3be69cyw8kvg',
+      accessToken: '8-5pojgzB3lbjBbMaLPSfns_JePQMUQ98O8VksOZSSc',
+    },
+  },
 ]
