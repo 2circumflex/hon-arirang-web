@@ -12,7 +12,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false
     // "allowJs": true,
     // "allowSyntheticDefaultImports": true,
     // "forceConsistentCasingInFileNames": true,
@@ -23,6 +25,7 @@
   "exclude": [
     ".cache",
     "node_modules",
-    "public"
+    "public",
+    "types"
   ]
 }

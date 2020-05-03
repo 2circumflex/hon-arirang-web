@@ -1,36 +1,49 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GatsbyNode } from 'gatsby'
 import { resolve } from 'path'
+import { ContentfulPost, ContentfulPostConnection } from './types/graphql-types'
 
-import { Post } from './src/models'
+export type Result = {
+  allContentfulPost: ContentfulPostConnection
+}
+
+export type PostContext = {
+  post: ContentfulPost
+}
+
+const query = `
+{
+  allContentfulPost {
+    nodes {
+      title
+      slug
+      createdAt
+      body {
+        json
+      }
+    }
+  }
+}
+`
 
 export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const { data, errors } = await graphql<any>(`
-    query {
-      allContentfulPost {
-        nodes {
-          title
-          slug
-          createdAt
-          body {
-            json
-          }
-        }
-      }
-    }
-  `)
+  const { data, errors } = await graphql<Result>(query)
 
   if (errors) {
     throw errors
   }
 
-  data.allContentfulPost.nodes.forEach((post: Post) => {
-    createPage({
-      path: `/${post.slug}`,
-      context: post,
-      component: resolve(__dirname, './src/pages/detail.tsx')
+  const detailComponent = resolve(__dirname, './src/components/detail.tsx')
+
+  if (data !== undefined) {
+    data.allContentfulPost.nodes.forEach(node => {
+      createPage<PostContext>({
+        path: `/${node.slug}`,
+        context: { post: node },
+        component: detailComponent
+      })
     })
-  })
+  }
 }

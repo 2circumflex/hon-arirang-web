@@ -7,20 +7,25 @@ import { NavLink } from 'theme-ui'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { Post } from '../models'
+import { Result } from '../../gatsby-node'
+import { ContentfulPost } from '../../types/graphql-types'
 
-const Index: React.FC = ({ data }) => {
-  console.log('찍어보자궁', data)
+interface IndexProps {
+  data: Result
+}
+
+const Index: React.FC<IndexProps> = props => {
+  const { data } = props
   return (
     <Layout>
       <SEO title='Home' />
       <h1>최근 작성한 게시글 목록</h1>
       <ul>
         {data.allContentfulPost.nodes &&
-          data.allContentfulPost.nodes.map((post: Post, index: number) => (
+          data.allContentfulPost.nodes.map((node: ContentfulPost, index: number) => (
             <li key={index}>
-              <NavLink href={`${post.slug}`}>
-                {post.title}
+              <NavLink href={`${node.slug}`}>
+                {node.title}
               </NavLink>
             </li>
           ))
@@ -33,16 +38,16 @@ const Index: React.FC = ({ data }) => {
 export default Index
 
 export const pageQuery = graphql`
-  query {
-    allContentfulPost {
-      nodes {
-        title
-        slug
-        createdAt
-        body {
-          json
-        }
+{
+  allContentfulPost {
+    nodes {
+    title
+      slug
+      createdAt
+      body {
+        json
       }
     }
   }
+}
 `
