@@ -24,4 +24,10 @@ export const plugins = [
       accessToken: '8-5pojgzB3lbjBbMaLPSfns_JePQMUQ98O8VksOZSSc',
     },
   },
+  {
+    resolve: 'gatsby-plugin-graphql-codegen',
+    options: {
+      fileName: `types/graphql-types.d.ts`
+    }
+  }
 ]
