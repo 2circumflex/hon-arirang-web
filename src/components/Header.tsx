@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   return (
     <header
       style={{
-        background: 'gray'
+        background: 'white'
       }}
     >
       <Flex
@@ -21,9 +21,14 @@ const Header: React.FC = () => {
         }}
       >
         <Flex sx={{ flex: 1 }}>
-          <Avatar src={avatar} />
+          <NavLink href='/'>
+            <Flex sx={{ alignItems: 'center' }}>
+              <Avatar src={avatar} sx={{ mr: '10px'}} />
+              혼아리랑
+            </Flex>
+          </NavLink>
         </Flex>
-        <Flex
+        {/* <Flex
           as='nav'
           sx={{
             alignSelf: 'right'
@@ -35,8 +40,9 @@ const Header: React.FC = () => {
           <NavLink href='#!' p={2}>
             About
           </NavLink>
-        </Flex>
+        </Flex> */}
       </Flex>
+      <hr style={{ background: '#e4e4e4', margin: 0 }} />
     </header>
   )
 }
