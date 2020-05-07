@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React from 'react'
+import { Flex } from 'theme-ui'
 
-import { maxWidth } from '../utils/const'
+import { maxWidth, headerHeight, horizontalPadding } from '../utils/const'
 import Header from './Header'
 import Footer from './Footer'
 import BlogTop from './BlogTop'
@@ -11,16 +12,26 @@ const Layout: React.FC = props => {
   return (
     <React.Fragment>
       <Header />
-      <BlogTop />
-      <div
+      <main
         style={{
-          margin: '0 auto',
-          maxWidth: maxWidth,
-          padding: '0 1rem',
+          marginTop: headerHeight,
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
-        <main>{props.children}</main>
-      </div>
+        <BlogTop />
+        <Flex
+          style={{
+            flex: 1,
+            maxWidth: maxWidth,
+            width: '100%',
+            padding: `64px ${horizontalPadding}`,
+            alignSelf: 'center'
+          }}
+        >
+          {props.children}
+        </Flex>
+      </main>
       <Footer />
     </React.Fragment>
   )

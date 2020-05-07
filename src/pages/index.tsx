@@ -3,12 +3,13 @@
 import { jsx } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
-import { NavLink } from 'theme-ui'
+import { Flex } from 'theme-ui'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { Result } from '../../gatsby-node'
 import { ContentfulPost } from '../../types/graphql-types'
+import Row from '../components/Row'
 
 interface IndexProps {
   data: Result
@@ -16,20 +17,29 @@ interface IndexProps {
 
 const Index: React.FC<IndexProps> = props => {
   const { data } = props
+
   return (
     <Layout>
       <SEO title='Home' />
-      <ul>
+      <Flex
+        sx={{
+          flex: 1,
+          flexDirection: 'column'
+        }}
+      >
         {data.allContentfulPost.nodes &&
           data.allContentfulPost.nodes.map((node: ContentfulPost, index: number) => (
-            <li key={index}>
-              <NavLink href={`${node.slug}`}>
-                {node.title}
-              </NavLink>
-            </li>
+            <React.Fragment key={index}>
+              <Row
+                contentfulPost={node}
+              />
+              {index !== (data.allContentfulPost.nodes.length - 1) &&
+                <div style={{ height: '80px' }} />
+              }
+            </React.Fragment>
           ))
         }
-      </ul>
+      </Flex>
     </Layout>
   )
 }
