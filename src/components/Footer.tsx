@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
           }}
         >
           <span>© 혼아리랑</span>
-          {/* TODO(roy)푸터 내용 */}
+          {/* TODO(roy): 푸터 내용 */}
         </Flex>
       </Flex>
     </footer>
