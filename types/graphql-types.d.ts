@@ -630,15 +630,29 @@ export type ContentfulPostBodyRichTextNodeContent = {
 export type ContentfulPostBodyRichTextNodeContentContent = {
   nodeType?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+  marks?: Maybe<Array<Maybe<ContentfulPostBodyRichTextNodeContentContentMarks>>>;
 };
 
 export type ContentfulPostBodyRichTextNodeContentContentFilterInput = {
   nodeType?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<StringQueryOperatorInput>;
+  marks?: Maybe<ContentfulPostBodyRichTextNodeContentContentMarksFilterListInput>;
 };
 
 export type ContentfulPostBodyRichTextNodeContentContentFilterListInput = {
   elemMatch?: Maybe<ContentfulPostBodyRichTextNodeContentContentFilterInput>;
+};
+
+export type ContentfulPostBodyRichTextNodeContentContentMarks = {
+  type?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPostBodyRichTextNodeContentContentMarksFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulPostBodyRichTextNodeContentContentMarksFilterListInput = {
+  elemMatch?: Maybe<ContentfulPostBodyRichTextNodeContentContentMarksFilterInput>;
 };
 
 export type ContentfulPostBodyRichTextNodeContentFilterInput = {
@@ -749,6 +763,8 @@ export type ContentfulPostBodyRichTextNodeFieldsEnum =
   | 'content___content'
   | 'content___content___nodeType'
   | 'content___content___value'
+  | 'content___content___marks'
+  | 'content___content___marks___type'
   | 'body'
   | 'json';
 
@@ -938,6 +954,7 @@ export type ContentfulPostFieldsEnum =
   | 'body___content___content'
   | 'body___content___content___nodeType'
   | 'body___content___content___value'
+  | 'body___content___content___marks'
   | 'body___body'
   | 'body___json'
   | 'spaceId'
@@ -993,6 +1010,7 @@ export type ContentfulPostFieldsEnum =
   | 'childContentfulPostBodyRichTextNode___content___content'
   | 'childContentfulPostBodyRichTextNode___content___content___nodeType'
   | 'childContentfulPostBodyRichTextNode___content___content___value'
+  | 'childContentfulPostBodyRichTextNode___content___content___marks'
   | 'childContentfulPostBodyRichTextNode___body'
   | 'childContentfulPostBodyRichTextNode___json';
 
@@ -1968,6 +1986,8 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2120,6 +2140,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -2322,6 +2344,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___author'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2414,6 +2438,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2505,15 +2531,29 @@ export type SitePageContextPostBodyJsonContent = {
 export type SitePageContextPostBodyJsonContentContent = {
   nodeType?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+  marks?: Maybe<Array<Maybe<SitePageContextPostBodyJsonContentContentMarks>>>;
 };
 
 export type SitePageContextPostBodyJsonContentContentFilterInput = {
   nodeType?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<StringQueryOperatorInput>;
+  marks?: Maybe<SitePageContextPostBodyJsonContentContentMarksFilterListInput>;
 };
 
 export type SitePageContextPostBodyJsonContentContentFilterListInput = {
   elemMatch?: Maybe<SitePageContextPostBodyJsonContentContentFilterInput>;
+};
+
+export type SitePageContextPostBodyJsonContentContentMarks = {
+  type?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPostBodyJsonContentContentMarksFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPostBodyJsonContentContentMarksFilterListInput = {
+  elemMatch?: Maybe<SitePageContextPostBodyJsonContentContentMarksFilterInput>;
 };
 
 export type SitePageContextPostBodyJsonContentFilterInput = {
@@ -3057,19 +3097,6 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
 };
-
-export type Unnamed_1_QueryVariables = {};
-
-
-export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-export type Unnamed_2_QueryVariables = {};
-
-
-export type Unnamed_2_Query = { allContentfulPost: { nodes: Array<(
-      Pick<ContentfulPost, 'title' | 'slug' | 'createdAt'>
-      & { body?: Maybe<Pick<ContentfulPostBodyRichTextNode, 'json'>> }
-    )> } };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

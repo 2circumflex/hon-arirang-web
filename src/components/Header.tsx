@@ -1,48 +1,40 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React from 'react'
-import { Flex, NavLink, Avatar } from 'theme-ui'
-import avatar from '../images/avatar.png'
+import { Flex, NavLink } from 'theme-ui'
+
+import { maxWidth, headerHeight } from '../utils/const'
+import logo from '../images/logo.png'
 
 const Header: React.FC = () => {
   return (
     <header
       style={{
-        background: 'white'
+        position: 'fixed',
+        display: 'flex',
+        justifyContent: 'center',
+        background: 'white',
+        width: '100%',
+        height: headerHeight,
+        left: 0,
+        top: 0,
+        borderBottom: '1px solid rgba(0, 0, 0, 12)'
       }}
     >
       <Flex
         style={{
-          margin: '0 auto',
-          height: '70px',
-          maxWidth: 768,
-          flexDirection: 'row',
-          alignItems: 'center'
+          flex: 1,
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          padding: '0 24px',
+          maxWidth: maxWidth,
+          height: '100%'
         }}
       >
-        <Flex sx={{ flex: 1 }}>
-          <NavLink href='/'>
-            <Flex sx={{ alignItems: 'center' }}>
-              <Avatar src={avatar} sx={{ mr: '10px'}} />
-              혼아리랑
-            </Flex>
-          </NavLink>
-        </Flex>
-        {/* <Flex
-          as='nav'
-          sx={{
-            alignSelf: 'right'
-          }}
-        >
-          <NavLink href='#!' p={2}>
-            Blog
-          </NavLink>
-          <NavLink href='#!' p={2}>
-            About
-          </NavLink>
-        </Flex> */}
+        <NavLink href='/'>
+          <img src={logo} alt='logo' style={{ marginTop: '10px' }} />
+        </NavLink>
       </Flex>
-      <hr style={{ background: '#e4e4e4', margin: 0 }} />
     </header>
   )
 }
