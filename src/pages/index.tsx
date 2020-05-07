@@ -19,7 +19,6 @@ const Index: React.FC<IndexProps> = props => {
   return (
     <Layout>
       <SEO title='Home' />
-      <h1>최근 작성한 게시글 목록</h1>
       <ul>
         {data.allContentfulPost.nodes &&
           data.allContentfulPost.nodes.map((node: ContentfulPost, index: number) => (
