@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import React from 'react'
 import { Flex, NavLink } from 'theme-ui'
 
-import { maxWidth, headerHeight } from '../utils/const'
+import { maxWidth, headerHeight, horizontalPadding } from '../utils/const'
 import logo from '../images/logo.png'
 
 const Header: React.FC = () => {
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
           flex: 1,
           justifyContent: 'flex-start',
           alignItems: 'center',
-          padding: '0 24px',
+          padding: `0 ${horizontalPadding}`,
           maxWidth: maxWidth,
           height: '100%'
         }}
