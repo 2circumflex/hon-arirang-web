@@ -35,7 +35,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
     throw errors
   }
 
-  const detailComponent = resolve(__dirname, './src/components/detail.tsx')
+  const detailComponent = resolve(__dirname, './src/components/Detail.tsx')
 
   if (data !== undefined) {
     data.allContentfulPost.nodes.forEach(node => {
