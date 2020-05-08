@@ -30,9 +30,7 @@ const Index: React.FC<IndexProps> = props => {
         {data.allContentfulPost.nodes &&
           data.allContentfulPost.nodes.map((node: ContentfulPost, index: number) => (
             <React.Fragment key={index}>
-              <Row
-                contentfulPost={node}
-              />
+              <Row contentfulPost={node} />
               {index !== (data.allContentfulPost.nodes.length - 1) &&
                 <div style={{ height: '80px' }} />
               }
@@ -46,12 +44,12 @@ const Index: React.FC<IndexProps> = props => {
 
 export default Index
 
-export const pageQuery = graphql`
+export const query = graphql`
 {
   allContentfulPost {
     nodes {
-    title
-      slug
+      contentful_id
+      title
       createdAt
       body {
         json

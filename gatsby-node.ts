@@ -1,22 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GatsbyNode } from 'gatsby'
 import { resolve } from 'path'
-import { ContentfulPost, ContentfulPostConnection } from './types/graphql-types'
+import { ContentfulPostConnection } from './types/graphql-types'
 
 export type Result = {
   allContentfulPost: ContentfulPostConnection
-}
-
-export type PostContext = {
-  post: ContentfulPost
 }
 
 const query = `
 {
   allContentfulPost {
     nodes {
+      contentful_id
       title
-      slug
       createdAt
       body {
         json
@@ -35,14 +31,14 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
     throw errors
   }
 
-  const detailComponent = resolve(__dirname, './src/components/Detail.tsx')
+  const Detail = resolve(__dirname, './src/components/Detail.tsx')
 
   if (data !== undefined) {
     data.allContentfulPost.nodes.forEach(node => {
-      createPage<PostContext>({
-        path: `/${node.slug}`,
+      createPage({
+        path: node.contentful_id,
         context: { post: node },
-        component: detailComponent
+        component: Detail
       })
     })
   }
