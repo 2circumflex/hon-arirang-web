@@ -12,10 +12,11 @@ interface RowProps {
 
 const Row: React.FC<RowProps> = props => {
   const { contentfulPost } = props
-  const { slug, title, createdAt } = contentfulPost
+  const { contentful_id, title, createdAt } = contentfulPost
 
   const createAtDate = new Date(createdAt)
   const createdAtDateString = format(createAtDate, 'yyyy년 MM월 dd일 hh시 mm분')
+
   return (
     <Flex>
       <Flex
@@ -25,7 +26,7 @@ const Row: React.FC<RowProps> = props => {
           justifyContent: 'center'
         }}
       >
-        <NavLink href={`${slug}`}>
+        <NavLink href={contentful_id}>
           <h2>{title}</h2>
         </NavLink>
         <h5

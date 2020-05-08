@@ -562,7 +562,6 @@ export type ContentfulPost = Node & {
   children: Array<Node>;
   internal: Internal;
   title?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   body?: Maybe<ContentfulPostBodyRichTextNode>;
   spaceId?: Maybe<Scalars['String']>;
@@ -908,7 +907,6 @@ export type ContentfulPostFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'title'
-  | 'slug'
   | 'createdAt'
   | 'body___id'
   | 'body___parent___id'
@@ -1020,7 +1018,6 @@ export type ContentfulPostFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   body?: Maybe<ContentfulPostBodyRichTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
@@ -2057,7 +2054,6 @@ export type QueryContentfulPostArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   body?: Maybe<ContentfulPostBodyRichTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
@@ -2504,8 +2500,8 @@ export type SitePageContextFilterInput = {
 };
 
 export type SitePageContextPost = {
+  contentful_id?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   body?: Maybe<SitePageContextPostBody>;
 };
@@ -2571,8 +2567,8 @@ export type SitePageContextPostBodyJsonFilterInput = {
 };
 
 export type SitePageContextPostFilterInput = {
+  contentful_id?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   body?: Maybe<SitePageContextPostBodyFilterInput>;
 };
@@ -2676,8 +2672,8 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___post___contentful_id'
   | 'context___post___title'
-  | 'context___post___slug'
   | 'context___post___createdAt'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
@@ -3107,7 +3103,7 @@ export type Unnamed_2_QueryVariables = {};
 
 
 export type Unnamed_2_Query = { allContentfulPost: { nodes: Array<(
-      Pick<ContentfulPost, 'title' | 'slug' | 'createdAt'>
+      Pick<ContentfulPost, 'contentful_id' | 'title' | 'createdAt'>
       & { body?: Maybe<Pick<ContentfulPostBodyRichTextNode, 'json'>> }
     )> } };
 
