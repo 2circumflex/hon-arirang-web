@@ -4,15 +4,15 @@ import React from 'react'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { Flex } from 'theme-ui'
 
-import { PostContext } from '../../gatsby-node'
+import { DetailContext } from '../../gatsby-node'
 import Layout from './Layout'
 // import SEO from '../components/SEO'
 
-interface DetailProps {
-  pageContext: PostContext
+interface PostProps {
+  pageContext: DetailContext
 }
 
-const Detail: React.FC<DetailProps> = props => {
+const Post: React.FC<PostProps> = props => {
   const { pageContext } = props
   return (
     <Layout>
@@ -32,4 +32,4 @@ const Detail: React.FC<DetailProps> = props => {
   )
 }
 
-export default Detail
+export default Post
