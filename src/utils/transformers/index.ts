@@ -3,7 +3,7 @@ import * as YouTubeTransformer from './YouTubeTransformer'
 
 export const getHTML = (url: string): string => {
   if (YouTubeTransformer.shouldTransform(url)) {
-    return YouTubeTransformer.getHTML(url)
+    return YouTubeTransformer.getYouTubeIFrameHTML(url)
   } else {
     return ''
   }

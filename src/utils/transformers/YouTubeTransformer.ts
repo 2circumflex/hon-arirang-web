@@ -47,7 +47,9 @@ export const getYouTubeIFrameSrc = (urlString: string): string => {
   return embedUrl.toString()
 }
 
-export const getHTML = (iframeSrc: string): string => {
+export const getYouTubeIFrameHTML = (url: string): string => {
+  const iframeSrc = getYouTubeIFrameSrc(url)
+
   return `
     <div
       style="
