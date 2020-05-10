@@ -41,7 +41,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
     for (const post of posts) {
       createPage<PostContext>({
         path: post.contentful_id,
-        context: { post: post },
+        context: {
+          post: post
+        },
         component: Post
       })
     }
