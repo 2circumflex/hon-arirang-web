@@ -13,7 +13,7 @@ import Layout from './Layout'
 
 const options: Options = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node) => {
+    [BLOCKS.PARAGRAPH]: (node, next) => {
       if (node.content.length > 0 && node.content[0].nodeType === 'text') {
         const embedPrefixUrlString = node.content[0].value
         if (embedPrefixUrlString.includes(embedPrefix)) {
@@ -21,6 +21,7 @@ const options: Options = {
           return getHTML(urlString)
         }
       }
+      return `<p>${next(node.content)}</p>`
     }
   }
 }
