@@ -5,7 +5,7 @@ import { documentToHtmlString, Options } from '@contentful/rich-text-html-render
 import { BLOCKS } from '@contentful/rich-text-types'
 import { Flex } from 'theme-ui'
 
-import { getHTML } from '../utils/transformer'
+import { getHTML } from '../utils/transformers'
 import { embedPrefix } from '../utils/const'
 import { PostContext } from '../../gatsby-node'
 import Layout from './Layout'
