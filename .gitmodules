@@ -1,0 +1,3 @@
+[submodule "submodules/gatsby-remark-embedder"]
+	path = submodules/gatsby-remark-embedder
+	url = https://github.com/MichaelDeBoey/gatsby-remark-embedder/

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^13.4.0",
+    "@contentful/rich-text-types": "^14.1.0",
     "@theme-ui/presets": "^0.3.0",
     "date-fns": "^2.13.0",
     "gatsby": "^2.18.14",

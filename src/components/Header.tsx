@@ -18,6 +18,7 @@ const Header: React.FC = () => {
         height: headerHeight,
         left: 0,
         top: 0,
+        zIndex: 300,
         borderBottom: '1px solid rgba(0, 0, 0, 12)'
       }}
     >

@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GatsbyNode } from 'gatsby'
 import { resolve } from 'path'
-import { ContentfulPostConnection } from './types/graphql-types'
+import { ContentfulPostConnection, ContentfulPost } from './types/graphql-types'
 
 export type Result = {
   allContentfulPost: ContentfulPostConnection
+}
+
+export type PostContext = {
+  post: ContentfulPost
 }
 
 const query = `
@@ -31,15 +35,21 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
     throw errors
   }
 
-  const Detail = resolve(__dirname, './src/components/Detail.tsx')
+  const Post = resolve(__dirname, './src/components/Post.tsx')
+
+  const createPagesFromContentfulPosts = async (posts: ContentfulPost[]) => {
+    for (const post of posts) {
+      createPage<PostContext>({
+        path: post.contentful_id,
+        context: {
+          post: post
+        },
+        component: Post
+      })
+    }
+  }
 
   if (data !== undefined) {
-    data.allContentfulPost.nodes.forEach(node => {
-      createPage({
-        path: node.contentful_id,
-        context: { post: node },
-        component: Detail
-      })
-    })
+    createPagesFromContentfulPosts(data.allContentfulPost.nodes)
   }
 }
